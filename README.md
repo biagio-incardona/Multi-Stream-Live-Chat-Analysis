@@ -7,7 +7,9 @@ Il progetto consiste nell'analisi in real time delle interazioni degli spettator
 
 ## Per chi?
 
-Il progetto è mirato a tutti gli streamer, specialmente per coloro che abitualmente effettuano stream su più piattaforme in parallelo, in questo caso YouTube e Twitch
+Il progetto è mirato a tutti gli streamer, specialmente per coloro che abitualmente effettuano stream su più piattaforme in parallelo, in questo caso YouTube e Twitch.
+
+Tale progetto può anche essere utilizzato da potenziali investitori (brand in cerca di sponsor) al fine da evitare di investire su profili con views comprate o con un basso impatto sul pubblico.
 
 ## Obbiettivo
 
