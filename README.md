@@ -31,6 +31,12 @@ Verrà quindi fornita una dashboard contenente le analisi principali con la poss
   * Indicizzazione : ElasticSearch
   * Visualizzazione : Kibana
   
+## Schema generale
+
+<p align="center">
+  <img src="doc/Schema.png" width="600" title="hover text">
+</p>
+  
 # Utilizzo
 
 ## Requisiti
