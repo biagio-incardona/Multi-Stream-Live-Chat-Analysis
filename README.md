@@ -1,4 +1,4 @@
-# Twitch-Youtube-Chat-Analysis
+# Multi-Stream-Live-Chat-Analysis
 
 ## Cos'è?
 
