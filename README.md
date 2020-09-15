@@ -1,87 +1,69 @@
-# Multi-Stream-Live-Chat-Analysis
+# Parametri per modelli basati su euristiche
 
-## Cos'è?
+Le funzioni che variano al variare dei parametri utilizzati sono 3:
+    
+    - cathUM
+    - newUsrs
+    - getHeatMap
 
-Twitch-Youtube-Chat-Analysis è un progetto universitario realizzato per il corso **TECHNOLOGIES FOR ADVANCED PROGRAMMING** dallo studente Incardona Biagio.
-Il progetto consiste nell'analisi in real time delle interazioni degli spettatori di un live stream su YouTube e/o Twitch.
+## catchUM(users, objs, version)
 
-## Per chi?
+Si occuperà di creare la utility matrix a partire dai file testuali
 
-Il progetto è mirato a tutti gli streamer, specialmente per coloro che abitualmente effettuano stream su più piattaforme in parallelo, in questo caso YouTube e Twitch.
+#### Parametri:
 
-Tale progetto può anche essere utilizzato da potenziali investitori (brand in cerca di pubblicità) al fine da evitare di investire su profili con views comprate o con un basso impatto sul pubblico.
+###### users: lista degli utenti presenti nel sistema
+###### objs: lista degli oggetti presenti nel sistema
+###### version: stringa indicante la metodologia di costruzione della utility matrix
 
-## Obbiettivo
+version può assumere uno dei seguenti valori:
+    - "V1" : utilizzare per il "time-only based model"
+    - "V2" : utilizzare per il "Attention-based model V1"
+    - "V3" : utilizzare per il "Attention-based model V2"
 
-Lo scopo ultimo di tale progetto è quello di avere un'interfaccia semplificata per analizzare il comportamento degli spettatori, in quanto le chat in una live stream sono spesso molto confusionare.
-Tale problematica viene ulteriormente amplificata se si effettuano gli stream in parallelo su più piattaforme.
+## newUsrs(um, names, users, objs, alphas, version, distance)
 
-Verrà quindi fornita una dashboard contenente le analisi principali con la possibilità:
-  1. Avere un'analisi riassuntiva riguardante entrambe le piattaforme contemporaneamente
-  2. Avere un'analisi mirata alla singola piattaforma
+Si occuperà creare la riga riguardante un nuovo utente analizzando riga per riga il corrispondente file testuale (simulerà lo streaming di dati che avverrebbe in un'applicazione reale)
 
-## Tecnologie utilizzate
-  * virtualizzazione : Docker
-  * Ingestion : Logstash + Scraping + API
-    1. Scraping : Selenium
-  * Streaming : Apache Kafka
-  * Processing : Apache Spark
-  * Natural Language Processing : SpaCy
-  * Sentiment analysis : Vader
-  * Indicizzazione : ElasticSearch
-  * Visualizzazione : Kibana
-  
-## Schema generale
+#### Parametri:
 
-<p align="center">
-  <img src="doc/Schema.png" width="600" title="hover text">
-</p>
-  
-# Utilizzo
+###### um: utility matrix già esistente del sistema
+###### names = lista degli utenti da aggiungere
+###### users = lista degli utenti attualmente nel sistema
+###### objs = lista degli oggetti attualmente nel sistema   
+###### alphas = lista delle 3 soglie di raccomandazione scelte, vanno espresse come valori in [0,1]
+###### version = versione della utility matrix scelta
 
-## Requisiti
+version può assumere uno dei seguenti valori:
+    - "V1" : utilizzare per il "time-only based model"
+    - "V2" : utilizzare per il "Attention-based model V1"
+    - "V3" : utilizzare per il "Attention-based model V2"
 
-Per il corretto funzionamento è richiesto aver installato Docker, il resto delle dipendenze e file necessari verranno aggiunti in automatico al primo avvio.
+###### distance = misura di distanza scelta
 
-## Guida
+distance può assumere uno dei seguenti valori:
+    - "euclidean" : distanza euclidea
+    - "cosine" : distanza del coseno
+    - "baht" : similarità di bhattacharyya
+    - "chisquared" : similarità chis-quared
 
-***Innanzitutto spostarsi dentro la directory del progetto***
+## getHeatMap(similarity, version):
 
-#### 1. Primo avvio (o in caso di docker images cancellate)
-Se è la prima volta che stai avviando il progetto (o ti si sono cancellate le docker images) esegui il seguente script, poi passa al punto 2.
+Si occuperà di generare la heatmap per le similarità tra gli utenti utilizzando la similarità scelta 
 
-```shell
+#### Parametri:
 
-$ ./build.sh
+###### version = versione della utility matrix scelta
 
-```
-NOTA: Questo passaggio potrebbe richiedere molto tempo, dipende dalla connessione ad internet disponibile
+version può assumere uno dei seguenti valori:
+    - "V1" : utilizzare per il "time-only based model"
+    - "V2" : utilizzare per il "Attention-based model V1"
+    - "V3" : utilizzare per il "Attention-based model V2"
 
-#### 2. Avvio
+###### distance = misura di distanza scelta
 
-Per avviare il progetto basta eseguire lo script 
-
-```shell
-
-$ ./start.sh [-t "nome del canale twitch, tutto in minuscolo"] [-y "id dello stream youtube*"] 
-
-```
-
-per ottenere l'id dello stream youtube basta estrapolare la parte finale dell'indirizzo web
-
-es.
-link : https://www.youtube.com/watch?v=US6iyJKGNLI
-
-id dello stream : **US6iyJKGNLI**
-
-I parametri -t e -y sono opzionali (almeno uno deve essere presente) e possono essere scambiati di posizione.
-
-#### Stop
-
-Per fermare il progetto basta eseguire il seguente script. Verranno Stoppati tutti i container ed a loro volta eliminati
-
-```shell
-
-$ ./stop.sh
-
-```
+distance può assumere uno dei seguenti valori:
+    - "euclidean" : distanza euclidea
+    - "cosine" : distanza del coseno
+    - "baht" : similarità di bhattacharyya
+    - "chisquared" : similarità chis-quared
