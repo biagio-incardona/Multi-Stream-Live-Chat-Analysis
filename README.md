@@ -3,7 +3,6 @@
 ## What is it?
 
 Twitch-Youtube-Chat-Analysis is a university project made by the student Incardona Biagio for the **TECHNOLOGIES FOR ADVANCED PROGRAMMING** course.
-The project 
 The project consists of real-time analysis of the viewers interactions on a live stream on YouTube and / or Twitch.
 
 ## Who?
