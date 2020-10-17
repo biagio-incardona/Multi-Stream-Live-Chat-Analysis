@@ -1,84 +1,84 @@
 # Multi-Stream-Live-Chat-Analysis
 
-## Cos'è?
+## What is it?
 
-Twitch-Youtube-Chat-Analysis è un progetto universitario realizzato per il corso **TECHNOLOGIES FOR ADVANCED PROGRAMMING** dallo studente Incardona Biagio.
-Il progetto consiste nell'analisi in real time delle interazioni degli spettatori di un live stream su YouTube e/o Twitch.
+Twitch-Youtube-Chat-Analysis is a university project made by the student Incardona Biagio for the **TECHNOLOGIES FOR ADVANCED PROGRAMMING** course.
+The project 
+The project consists of real-time analysis of the viewers interactions on a live stream on YouTube and / or Twitch.
 
-## Per chi?
+## Who?
 
-Il progetto è mirato a tutti gli streamer, specialmente per coloro che abitualmente effettuano stream su più piattaforme in parallelo, in questo caso YouTube e Twitch.
+The project is aimed to streamers and potential investors who want analyze a channel before spending their money.
 
-Tale progetto può anche essere utilizzato da potenziali investitori (brand in cerca di pubblicità) al fine da evitare di investire su profili con views comprate o con un basso impatto sul pubblico.
+## Goal
 
-## Obbiettivo
+The main goal is to have a simply interface to analyze the viewers behavior as the chats in a live stream can be really confusing.
+That issue became worse if parallel streams in different platforms are made
 
-Lo scopo ultimo di tale progetto è quello di avere un'interfaccia semplificata per analizzare il comportamento degli spettatori, in quanto le chat in una live stream sono spesso molto confusionare.
-Tale problematica viene ulteriormente amplificata se si effettuano gli stream in parallelo su più piattaforme.
 
-Verrà quindi fornita una dashboard contenente le analisi principali con la possibilità:
-  1. Avere un'analisi riassuntiva riguardante entrambe le piattaforme contemporaneamente
-  2. Avere un'analisi mirata alla singola piattaforma
+A dashboard will then be provided containing the main analyzes with the possibility:
+  1. Have a summary analysis concerning all the platforms simultaneously
+  2. Have an analysis aimed at the single platform
 
-## Tecnologie utilizzate
-  * virtualizzazione : Docker
+## Used technologies
+  * Virtualization : Docker
   * Ingestion : Logstash + Scraping + API
     1. Scraping : Selenium
   * Streaming : Apache Kafka
   * Processing : Apache Spark
   * Natural Language Processing : SpaCy
   * Sentiment analysis : Vader
-  * Indicizzazione : ElasticSearch
-  * Visualizzazione : Kibana
+  * Indexing : ElasticSearch
+  * Visualization : Kibana
   
-## Schema generale
+## General Schema
 
 <p align="center">
   <img src="doc/Schema.png" width="600" title="hover text">
 </p>
   
-# Utilizzo
+# Use
 
-## Requisiti
+## Requirements
 
-Per il corretto funzionamento è richiesto aver installato Docker, il resto delle dipendenze e file necessari verranno aggiunti in automatico al primo avvio.
+Docker is required for correct running, the rest of dependencies and necessary files will be automatically added at first start.
 
-## Guida
+## Guide
 
-***Innanzitutto spostarsi dentro la directory del progetto***
+***First, move into the project directory***
 
-#### 1. Primo avvio (o in caso di docker images cancellate)
-Se è la prima volta che stai avviando il progetto (o ti si sono cancellate le docker images) esegui il seguente script, poi passa al punto 2.
+#### 1. First start (Or if you had deleted the docker images)
+If this is the first time you are running the project (or your docker images have been deleted) run the following script, then go to step 2.
 
 ```shell
 
 $ ./build.sh
 
 ```
-NOTA: Questo passaggio potrebbe richiedere molto tempo, dipende dalla connessione ad internet disponibile
+NOTE: This step may take a long time depending on the internet connection available
 
-#### 2. Avvio
+#### 2. Start
 
-Per avviare il progetto basta eseguire lo script 
+To run the project you just need to run this script 
 
 ```shell
 
-$ ./start.sh [-t "nome del canale twitch, tutto in minuscolo"] [-y "id dello stream youtube*"] 
+$ ./start.sh [-t "lowcase, Twitch channel name"] [-y "YouTube stream id*"] 
 
 ```
+To get the YouTube stream you have to copy the last part of the link
 
-per ottenere l'id dello stream youtube basta estrapolare la parte finale dell'indirizzo web
+ies.
 
-es.
 link : https://www.youtube.com/watch?v=US6iyJKGNLI
 
-id dello stream : **US6iyJKGNLI**
+stream id : **US6iyJKGNLI**
 
-I parametri -t e -y sono opzionali (almeno uno deve essere presente) e possono essere scambiati di posizione.
+Both the parameters -t and -y are optional (at least one have to be present) and could be swapped
 
 #### Stop
 
-Per fermare il progetto basta eseguire il seguente script. Verranno Stoppati tutti i container ed a loro volta eliminati
+To stop the project you just need to run this script. All containers will be stoppend and deleted 
 
 ```shell
 
