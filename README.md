@@ -15,9 +15,9 @@ The main goal is to have a simply interface to analyze the viewers behavior as t
 That issue became worse if parallel streams in different platforms are made
 
 
-A dashboard will then be provided containing the main analyzes with the possibility:
-  1. Have a summary analysis concerning all the platforms simultaneously
-  2. Have an analysis aimed at the single platform
+A dashboard will then be provided containing the main analysis with the possibility of:
+  1. Having a summary analysis concerning all the platforms simultaneously
+  2. Having an analysis aimed at the single platform
 
 ## Used technologies
   * Virtualization : Docker
